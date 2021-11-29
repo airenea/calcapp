@@ -8,24 +8,126 @@ module NewtonAPI
         def initialize(oauth_token = nil)
           @oauth_token = oauth_token
         end
-  
-        def simplify(expression)
-            expression = expression.gsub("+","%2B")
-            expression = expression.gsub("/","(over)")
-            expression = expression.gsub("^","%5E")
-          request(
-            http_method: :get,
-            endpoint: "simplify/#{expression}"
-          )
-        end
 
-        def factor(expression)
-            expression = expression.gsub("+","%2B")
+        # SIMPLIFY, FACTOR, DERIVE, INTEGRATE, ABS
+        def compute(function, expression)
+            expression = expression.gsub("+","%2B").delete(' ')
             expression = expression.gsub("/","(over)")
             expression = expression.gsub("^","%5E")
             request(
               http_method: :get,
-              endpoint: "factor/#{expression}"
+              endpoint: "#{function}/#{expression}"
+            )
+        end
+
+        # SINE, COSINE, TANGENT
+        def trig(function, expression, radians)
+            if radians == false
+                expression = expression.to_i * Math::PI / 180 
+                expression = expression.to_s
+            end
+            expression = expression.gsub("+","%2B").delete(' ')
+            expression = expression.gsub("/","(over)")
+            expression = expression.gsub("^","%5E")
+            request(
+              http_method: :get,
+              endpoint: "#{function}/#{expression}"
+            )
+        end
+
+        # ARCSIN, ARCCOS, ARCTAN
+        def arctrig(function, expression, radians)
+            expression = expression.gsub("+","%2B").delete(' ')
+            expression = expression.gsub("/","(over)")
+            expression = expression.gsub("^","%5E")
+            request(
+              http_method: :get,
+              endpoint: "#{function}/#{expression}"
+            )
+            if radians == false
+                request.result = request.result.to_i  * 180 / Math::PI
+                request.result = request.result.to_s
+            end
+        end
+        
+        # AREA UNDER CURVE
+        def area_curve(lower, upper, expression)
+            lower = lower.gsub("+","%2B").delete(' ')
+            lower = lower.gsub("/","(over)")
+            lower = lower.gsub("^","%5E")
+            upper = upper.gsub("+","%2B").delete(' ')
+            upper = upper.gsub("/","(over)")
+            upper = upper.gsub("^","%5E")
+            expression = expression.gsub("+","%2B").delete(' ')
+            expression = expression.gsub("/","(over)")
+            expression = expression.gsub("^","%5E")
+            lower = lower.to_i.to_s
+            upper = upper.to_i.to_s
+            def_integral = lower + ":" + upper + "%7C" + expression
+            request(
+              http_method: :get,
+              endpoint: "area/#{def_integral}"
+            )
+        end
+
+        # TANGENT
+        def tangent(point, expression)
+            point = point.gsub("+","%2B").delete(' ')
+            point = point.gsub("/","(over)")
+            point = point.gsub("^","%5E")
+            expression = expression.gsub("+","%2B").delete(' ')
+            expression = expression.gsub("/","(over)")
+            expression = expression.gsub("^","%5E")
+            point = point.to_i.to_s
+            tangent_line = point + "%7C" + expression
+            request(
+              http_method: :get,
+              endpoint: "tangent/#{tangent_line}"
+            )
+        end
+
+        # LOGARITHM
+        def log(base, number)
+            base = base.gsub("+","%2B").delete(' ')
+            base = base.gsub("/","(over)")
+            base = base.gsub("^","%5E")
+            number = number.gsub("+","%2B").delete(' ')
+            number = number.gsub("/","(over)")
+            number = number.gsub("^","%5E")
+            base = base.to_i.to_s
+            number = number.to_i.to_s
+            log_input = base + "%7C" + number
+            request(
+              http_method: :get,
+              endpoint: "log/#{log_input}"
+            )
+        end
+
+        # ZEROES
+        def zeroes(expression)
+            expression = expression.gsub("+","%2B").delete(' ')
+            expression = expression.gsub("/","(over)")
+            expression = expression.gsub("^","%5E")
+            request(
+              http_method: :get,
+              endpoint: "zeroes/#{expression}"
+            )
+        end
+
+        # SOLVE
+        def solve(lefthand, righthand)
+            lefthand = lefthand.gsub("+","%2B").delete(' ')
+            lefthand = lefthand.gsub("/","(over)")
+            lefthand = lefthand.gsub("^","%5E")
+            righthand = righthand.gsub("+","%2B").delete(' ')
+            righthand = righthand.gsub("/","(over)")
+            righthand = righthand.gsub("^","%5E")
+            expression = lefthand + "-(" + righthand + ")"
+            simplified = compute("simplify", expression)
+            simplified_result = simplified["result"].gsub("+","%2B").delete(' ').gsub("/","(over)").gsub("^","%5E")
+            request(
+              http_method: :get,
+              endpoint: "zeroes/#{simplified_result}"
             )
         end
     
