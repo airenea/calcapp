@@ -24,11 +24,19 @@ class TrigComputationsController < ApplicationController
 
   def create
     @trig_computation = TrigComputation.new(trig_computation_params)
-    if @trig_computation.radians == false
-      expression = trig_computation_params[:expression]
-      @trig_computation.result = @client.trig(trig_computation_params[:function], (expression.to_i * Math::PI / 180).to_s)["result"]
-    else
-      @trig_computation.result = @client.trig(trig_computation_params[:function], trig_computation_params[:expression])["result"]
+    if ["sin", "cos", "tan"].include? @trig_computation.function
+      if @trig_computation.radians == false
+        expression = trig_computation_params[:expression]
+        @trig_computation.result = @client.trig(trig_computation_params[:function], (expression.to_i * Math::PI / 180).to_s)["result"]
+      else
+        @trig_computation.result = @client.trig(trig_computation_params[:function], trig_computation_params[:expression])["result"]
+      end
+    elsif ["arcsin", "arccos", "arctan"].include? @trig_computation.function
+      if @trig_computation.radians == false
+        @trig_computation.result = (@client.trig(trig_computation_params[:function], trig_computation_params[:expression])["result"].to_i * Math::PI / 180).to_s
+      else
+        @trig_computation.result = @client.trig(trig_computation_params[:function], trig_computation_params[:expression])["result"]
+      end
     end
     respond_to do |format|
       if @trig_computation.save
@@ -43,7 +51,7 @@ class TrigComputationsController < ApplicationController
 
   # PATCH/PUT /trig_computations/1 or /trig_computations/1.json
   def update
-    @trig_computation.result = @client.trig(trig_computation_params[:function], trig_computation_params[:expression], trig_computation_params[:radians])["result"]
+
     respond_to do |format|
       if @trig_computation.update(trig_computation_params)
         format.html { redirect_to @trig_computation, notice: "Trig computation was successfully updated." }

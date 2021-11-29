@@ -20,7 +20,7 @@ module NewtonAPI
             )
         end
 
-        # SINE, COSINE, TANGENT
+        # SINE, COSINE, TANGENT, ARCSIN, ARCCOS, ARCTAN
         def trig(function, expression)
             expression = expression.gsub("+","%2B").delete(' ')
             expression = expression.gsub("/","(over)")
@@ -29,21 +29,6 @@ module NewtonAPI
               http_method: :get,
               endpoint: "#{function}/#{expression}"
             )
-        end
-
-        # ARCSIN, ARCCOS, ARCTAN
-        def arctrig(function, expression, radians)
-            expression = expression.gsub("+","%2B").delete(' ')
-            expression = expression.gsub("/","(over)")
-            expression = expression.gsub("^","%5E")
-            request(
-              http_method: :get,
-              endpoint: "#{function}/#{expression}"
-            )
-            if radians == false
-                request.result = request.result.to_i  * 180 / Math::PI
-                request.result = request.result.to_s
-            end
         end
         
         # AREA UNDER CURVE
