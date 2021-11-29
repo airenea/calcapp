@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_102844) do
+ActiveRecord::Schema.define(version: 2021_11_29_115510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,39 @@ ActiveRecord::Schema.define(version: 2021_11_29_102844) do
     t.string "result"
   end
 
+  create_table "def_integral_computations", force: :cascade do |t|
+    t.string "lower_bound"
+    t.string "upper_bound"
+    t.string "expression"
+    t.string "result"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "log_computations", force: :cascade do |t|
+    t.string "base"
+    t.string "number"
+    t.string "result"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "solve_computations", force: :cascade do |t|
+    t.string "left_hand"
+    t.string "right_hand"
+    t.string "result"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tangent_computations", force: :cascade do |t|
+    t.string "point"
+    t.string "expression"
+    t.string "result"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "trig_computations", force: :cascade do |t|
     t.string "function"
     t.string "expression"
@@ -30,6 +63,13 @@ ActiveRecord::Schema.define(version: 2021_11_29_102844) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "result"
+  end
+
+  create_table "zeroes_computations", force: :cascade do |t|
+    t.string "expression"
+    t.string "result"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
