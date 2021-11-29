@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_100704) do
+ActiveRecord::Schema.define(version: 2021_11_29_102844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2021_11_29_100704) do
   create_table "computations", force: :cascade do |t|
     t.string "function"
     t.string "expression"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "result"
+  end
+
+  create_table "trig_computations", force: :cascade do |t|
+    t.string "function"
+    t.string "expression"
+    t.boolean "radians"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "result"

@@ -1,0 +1,2 @@
+class TrigComputation < ApplicationRecord
+end

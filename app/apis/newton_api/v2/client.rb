@@ -21,11 +21,7 @@ module NewtonAPI
         end
 
         # SINE, COSINE, TANGENT
-        def trig(function, expression, radians)
-            if radians == false
-                expression = expression.to_i * Math::PI / 180 
-                expression = expression.to_s
-            end
+        def trig(function, expression)
             expression = expression.gsub("+","%2B").delete(' ')
             expression = expression.gsub("/","(over)")
             expression = expression.gsub("^","%5E")

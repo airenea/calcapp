@@ -1,0 +1,2 @@
+module TrigComputationsHelper
+end

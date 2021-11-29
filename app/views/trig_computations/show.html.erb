@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Function:</strong>
+  <%= @trig_computation.function %>
+</p>
+
+<p>
+  <strong>Expression:</strong>
+  <%= @trig_computation.expression %>
+</p>
+
+<p>
+  <strong>Radians:</strong>
+  <%= @trig_computation.radians %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%
+  result = @trig_computation.result
+  %>
+  <%= result %>
+</p>
+
+<%= link_to 'Edit', edit_trig_computation_path(@trig_computation) %> |
+<%= link_to 'Back', trig_computations_path %>

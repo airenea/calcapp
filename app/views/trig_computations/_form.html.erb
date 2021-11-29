@@ -1,0 +1,32 @@
+<%= form_with(model: trig_computation) do |form| %>
+  <% if trig_computation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(trig_computation.errors.count, "error") %> prohibited this trig_computation from being saved:</h2>
+
+      <ul>
+        <% trig_computation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :function %>
+    <%= form.text_field :function %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expression %>
+    <%= form.text_field :expression %>
+  </div>
+
+  <div class="field">
+    <%= form.label :radians %>
+    <%= form.check_box :radians %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
