@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Log Computations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Base</th>
+      <th>Number</th>
+      <th>Result</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @log_computations.each do |log_computation| %>
+      <tr>
+        <td><%= log_computation.base %></td>
+        <td><%= log_computation.number %></td>
+        <td><%= log_computation.result %></td>
+        <td><%= link_to 'Show', log_computation %></td>
+        <td><%= link_to 'Edit', edit_log_computation_path(log_computation) %></td>
+        <td><%= link_to 'Destroy', log_computation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Log Computation', new_log_computation_path %>

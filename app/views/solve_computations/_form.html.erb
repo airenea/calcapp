@@ -1,0 +1,32 @@
+<%= form_with(model: solve_computation) do |form| %>
+  <% if solve_computation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(solve_computation.errors.count, "error") %> prohibited this solve_computation from being saved:</h2>
+
+      <ul>
+        <% solve_computation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :left_hand %>
+    <%= form.text_field :left_hand %>
+  </div>
+
+  <div class="field">
+    <%= form.label :right_hand %>
+    <%= form.text_field :right_hand %>
+  </div>
+
+  <div class="field">
+    <%= form.label :result %>
+    <%= form.text_field :result %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

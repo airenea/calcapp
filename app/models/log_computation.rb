@@ -1,0 +1,2 @@
+class LogComputation < ApplicationRecord
+end

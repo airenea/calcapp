@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lower bound:</strong>
+  <%= @def_integral_computation.lower_bound %>
+</p>
+
+<p>
+  <strong>Upper bound:</strong>
+  <%= @def_integral_computation.upper_bound %>
+</p>
+
+<p>
+  <strong>Expression:</strong>
+  <%= @def_integral_computation.expression %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @def_integral_computation.result %>
+</p>
+
+<%= link_to 'Edit', edit_def_integral_computation_path(@def_integral_computation) %> |
+<%= link_to 'Back', def_integral_computations_path %>

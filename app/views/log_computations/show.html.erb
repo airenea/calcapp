@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Base:</strong>
+  <%= @log_computation.base %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @log_computation.number %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @log_computation.result %>
+</p>
+
+<%= link_to 'Edit', edit_log_computation_path(@log_computation) %> |
+<%= link_to 'Back', log_computations_path %>

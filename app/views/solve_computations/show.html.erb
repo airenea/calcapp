@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Left hand:</strong>
+  <%= @solve_computation.left_hand %>
+</p>
+
+<p>
+  <strong>Right hand:</strong>
+  <%= @solve_computation.right_hand %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @solve_computation.result %>
+</p>
+
+<%= link_to 'Edit', edit_solve_computation_path(@solve_computation) %> |
+<%= link_to 'Back', solve_computations_path %>

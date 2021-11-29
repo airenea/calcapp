@@ -1,0 +1,2 @@
+class DefIntegralComputation < ApplicationRecord
+end

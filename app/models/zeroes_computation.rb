@@ -1,0 +1,2 @@
+class ZeroesComputation < ApplicationRecord
+end

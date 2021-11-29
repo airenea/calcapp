@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lower_bound: MyString
+  upper_bound: MyString
+  expression: MyString
+  result: MyString
+
+two:
+  lower_bound: MyString
+  upper_bound: MyString
+  expression: MyString
+  result: MyString

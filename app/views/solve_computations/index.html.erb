@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Solve Computations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Left hand</th>
+      <th>Right hand</th>
+      <th>Result</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @solve_computations.each do |solve_computation| %>
+      <tr>
+        <td><%= solve_computation.left_hand %></td>
+        <td><%= solve_computation.right_hand %></td>
+        <td><%= solve_computation.result %></td>
+        <td><%= link_to 'Show', solve_computation %></td>
+        <td><%= link_to 'Edit', edit_solve_computation_path(solve_computation) %></td>
+        <td><%= link_to 'Destroy', solve_computation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Solve Computation', new_solve_computation_path %>

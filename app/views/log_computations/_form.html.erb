@@ -1,0 +1,32 @@
+<%= form_with(model: log_computation) do |form| %>
+  <% if log_computation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(log_computation.errors.count, "error") %> prohibited this log_computation from being saved:</h2>
+
+      <ul>
+        <% log_computation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :base %>
+    <%= form.text_field :base %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.text_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :result %>
+    <%= form.text_field :result %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

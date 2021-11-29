@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Point:</strong>
+  <%= @tangent_computation.point %>
+</p>
+
+<p>
+  <strong>Expression:</strong>
+  <%= @tangent_computation.expression %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @tangent_computation.result %>
+</p>
+
+<%= link_to 'Edit', edit_tangent_computation_path(@tangent_computation) %> |
+<%= link_to 'Back', tangent_computations_path %>

@@ -1,0 +1,2 @@
+class TangentComputation < ApplicationRecord
+end

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Def Integral Computations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lower bound</th>
+      <th>Upper bound</th>
+      <th>Expression</th>
+      <th>Result</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @def_integral_computations.each do |def_integral_computation| %>
+      <tr>
+        <td><%= def_integral_computation.lower_bound %></td>
+        <td><%= def_integral_computation.upper_bound %></td>
+        <td><%= def_integral_computation.expression %></td>
+        <td><%= def_integral_computation.result %></td>
+        <td><%= link_to 'Show', def_integral_computation %></td>
+        <td><%= link_to 'Edit', edit_def_integral_computation_path(def_integral_computation) %></td>
+        <td><%= link_to 'Destroy', def_integral_computation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Def Integral Computation', new_def_integral_computation_path %>

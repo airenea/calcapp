@@ -1,0 +1,27 @@
+<%= form_with(model: zeroes_computation) do |form| %>
+  <% if zeroes_computation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(zeroes_computation.errors.count, "error") %> prohibited this zeroes_computation from being saved:</h2>
+
+      <ul>
+        <% zeroes_computation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :expression %>
+    <%= form.text_field :expression %>
+  </div>
+
+  <div class="field">
+    <%= form.label :result %>
+    <%= form.text_field :result %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
