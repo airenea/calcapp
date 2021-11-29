@@ -23,7 +23,7 @@ class ZeroesComputationsController < ApplicationController
   # POST /zeroes_computations or /zeroes_computations.json
   def create
     @zeroes_computation = ZeroesComputation.new(zeroes_computation_params)
-    @zeroes_computation.result = @client.zeroes(computation_params[:expression])["result"]
+    @zeroes_computation.result = @client.zeroes(zeroes_computation_params[:expression])["result"]
 
     respond_to do |format|
       if @zeroes_computation.save
@@ -38,7 +38,7 @@ class ZeroesComputationsController < ApplicationController
 
   # PATCH/PUT /zeroes_computations/1 or /zeroes_computations/1.json
   def update
-    @zeroes_computation.result = @client.zeroes(computation_params[:expression])["result"]
+    @zeroes_computation.result = @client.zeroes(zeroes_computation_params[:expression])["result"]
     respond_to do |format|
       if @zeroes_computation.update(zeroes_computation_params)
         format.html { redirect_to @zeroes_computation, notice: "Zeroes computation was successfully updated." }

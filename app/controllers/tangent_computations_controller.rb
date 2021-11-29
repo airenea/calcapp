@@ -23,7 +23,7 @@ class TangentComputationsController < ApplicationController
   # POST /tangent_computations or /tangent_computations.json
   def create
     @tangent_computation = TangentComputation.new(tangent_computation_params)
-    @tangent_computation.result = @client.tangent(computation_params[:point], computation_params[:expression])["result"]
+    @tangent_computation.result = @client.tangent(tangent_computation_params[:point], tangent_computation_params[:expression])["result"]
 
     respond_to do |format|
       if @tangent_computation.save
@@ -38,7 +38,7 @@ class TangentComputationsController < ApplicationController
 
   # PATCH/PUT /tangent_computations/1 or /tangent_computations/1.json
   def update
-    @tangent_computation.result = @client.tangent(computation_params[:point], computation_params[:expression])["result"]
+    @tangent_computation.result = @client.tangent(tangent_computation_params[:point], tangent_computation_params[:expression])["result"]
     respond_to do |format|
       if @tangent_computation.update(tangent_computation_params)
         format.html { redirect_to @tangent_computation, notice: "Tangent computation was successfully updated." }

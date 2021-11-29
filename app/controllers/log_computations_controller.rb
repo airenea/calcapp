@@ -23,7 +23,7 @@ class LogComputationsController < ApplicationController
   # POST /log_computations or /log_computations.json
   def create
     @log_computation = LogComputation.new(log_computation_params)
-    @log_computation.result = @client.log(computation_params[:base], computation_params[:number])["result"]
+    @log_computation.result = @client.log(log_computation_params[:base], log_computation_params[:number])["result"]
 
     respond_to do |format|
       if @log_computation.save
@@ -38,7 +38,7 @@ class LogComputationsController < ApplicationController
 
   # PATCH/PUT /log_computations/1 or /log_computations/1.json
   def update
-    @log_computation.result = @client.log(computation_params[:base], computation_params[:number])["result"]
+    @log_computation.result = @client.log(log_computation_params[:base], log_computation_params[:number])["result"]
     respond_to do |format|
       if @log_computation.update(log_computation_params)
         format.html { redirect_to @log_computation, notice: "Log computation was successfully updated." }
