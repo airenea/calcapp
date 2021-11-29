@@ -23,6 +23,7 @@ class SolveComputationsController < ApplicationController
   # POST /solve_computations or /solve_computations.json
   def create
     @solve_computation = SolveComputation.new(solve_computation_params)
+    @solve_computation.result = @client.solve(computation_params[:left_hand], computation_params[:right_hand])["result"]
 
     respond_to do |format|
       if @solve_computation.save
@@ -37,6 +38,7 @@ class SolveComputationsController < ApplicationController
 
   # PATCH/PUT /solve_computations/1 or /solve_computations/1.json
   def update
+    @solve_computation.result = @client.solve(computation_params[:left_hand], computation_params[:right_hand])["result"]
     respond_to do |format|
       if @solve_computation.update(solve_computation_params)
         format.html { redirect_to @solve_computation, notice: "Solve computation was successfully updated." }
