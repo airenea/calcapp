@@ -23,7 +23,7 @@ class DefIntegralComputationsController < ApplicationController
   # POST /def_integral_computations or /def_integral_computations.json
   def create
     @def_integral_computation = DefIntegralComputation.new(def_integral_computation_params)
-    @def_integral_computation.result = @client.area_curve(def_integral_computation_params[:lower_bound], def_integral_computation_params[:upper_bound], def_integral_computation_params[:expression])["result"]
+    @def_integral_computation.result = @client.area_curve(def_integral_computation_params[:lower_bound], def_integral_computation_params[:upper_bound], def_integral_computation_params[:expression])["result"][0 ... 15].to_d
     respond_to do |format|
       if @def_integral_computation.save
         format.html { redirect_to @def_integral_computation, notice: "Def integral computation was successfully created." }
@@ -37,7 +37,7 @@ class DefIntegralComputationsController < ApplicationController
 
   # PATCH/PUT /def_integral_computations/1 or /def_integral_computations/1.json
   def update
-    @def_integral_computation.result = @client.area_curve(def_integral_computation_params[:lower_bound], def_integral_computation_params[:upper_bound], def_integral_computation_params[:expression])["result"]
+    @def_integral_computation.result = @client.area_curve(def_integral_computation_params[:lower_bound], def_integral_computation_params[:upper_bound], def_integral_computation_params[:expression])["result"].to_d
     respond_to do |format|
       if @def_integral_computation.update(def_integral_computation_params)
         format.html { redirect_to @def_integral_computation, notice: "Def integral computation was successfully updated." }
