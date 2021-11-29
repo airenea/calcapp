@@ -69,6 +69,6 @@ class ZeroesComputationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def zeroes_computation_params
-      params.require(:zeroes_computation).permit(:expression, :result)
+      params.require(:zeroes_computation).permit(:expression)
     end
 end

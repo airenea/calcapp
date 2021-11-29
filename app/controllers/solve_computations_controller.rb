@@ -69,6 +69,6 @@ class SolveComputationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def solve_computation_params
-      params.require(:solve_computation).permit(:left_hand, :right_hand, :result)
+      params.require(:solve_computation).permit(:left_hand, :right_hand)
     end
 end

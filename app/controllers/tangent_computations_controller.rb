@@ -69,6 +69,6 @@ class TangentComputationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tangent_computation_params
-      params.require(:tangent_computation).permit(:point, :expression, :result)
+      params.require(:tangent_computation).permit(:point, :expression)
     end
 end

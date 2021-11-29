@@ -69,6 +69,6 @@ class LogComputationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def log_computation_params
-      params.require(:log_computation).permit(:base, :number, :result)
+      params.require(:log_computation).permit(:base, :number)
     end
 end

@@ -70,6 +70,6 @@ class DefIntegralComputationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def def_integral_computation_params
-      params.require(:def_integral_computation).permit(:lower_bound, :upper_bound, :expression, :result)
+      params.require(:def_integral_computation).permit(:lower_bound, :upper_bound, :expression)
     end
 end
