@@ -1,5 +1,6 @@
 class TangentComputationsController < ApplicationController
   before_action :set_tangent_computation, only: %i[ show edit update destroy ]
+  before_action :get_api
 
   # GET /tangent_computations or /tangent_computations.json
   def index
@@ -54,6 +55,10 @@ class TangentComputationsController < ApplicationController
       format.html { redirect_to tangent_computations_url, notice: "Tangent computation was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def get_api
+    @client = NewtonAPI::V2::Client.new
   end
 
   private

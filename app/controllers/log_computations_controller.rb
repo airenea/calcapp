@@ -1,5 +1,6 @@
 class LogComputationsController < ApplicationController
   before_action :set_log_computation, only: %i[ show edit update destroy ]
+  before_action :get_api
 
   # GET /log_computations or /log_computations.json
   def index
@@ -54,6 +55,10 @@ class LogComputationsController < ApplicationController
       format.html { redirect_to log_computations_url, notice: "Log computation was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def get_api
+    @client = NewtonAPI::V2::Client.new
   end
 
   private

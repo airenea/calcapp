@@ -1,5 +1,6 @@
 class DefIntegralComputationsController < ApplicationController
   before_action :set_def_integral_computation, only: %i[ show edit update destroy ]
+  before_action :get_api
 
   # GET /def_integral_computations or /def_integral_computations.json
   def index
@@ -54,6 +55,10 @@ class DefIntegralComputationsController < ApplicationController
       format.html { redirect_to def_integral_computations_url, notice: "Def integral computation was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def get_api
+    @client = NewtonAPI::V2::Client.new
   end
 
   private

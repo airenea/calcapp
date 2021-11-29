@@ -1,5 +1,6 @@
 class ZeroesComputationsController < ApplicationController
   before_action :set_zeroes_computation, only: %i[ show edit update destroy ]
+  before_action :get_api
 
   # GET /zeroes_computations or /zeroes_computations.json
   def index
@@ -54,6 +55,10 @@ class ZeroesComputationsController < ApplicationController
       format.html { redirect_to zeroes_computations_url, notice: "Zeroes computation was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def get_api
+    @client = NewtonAPI::V2::Client.new
   end
 
   private

@@ -1,5 +1,6 @@
 class SolveComputationsController < ApplicationController
   before_action :set_solve_computation, only: %i[ show edit update destroy ]
+  before_action :get_api
 
   # GET /solve_computations or /solve_computations.json
   def index
@@ -54,6 +55,10 @@ class SolveComputationsController < ApplicationController
       format.html { redirect_to solve_computations_url, notice: "Solve computation was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def get_api
+    @client = NewtonAPI::V2::Client.new
   end
 
   private

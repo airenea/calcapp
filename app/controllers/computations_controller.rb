@@ -10,7 +10,7 @@ class ComputationsController < ApplicationController
   # GET /computations/1 or /computations/1.json
   def show
   end
-
+ 
   # GET /computations/new
   def new
     @computation = Computation.new
