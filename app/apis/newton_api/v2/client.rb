@@ -42,8 +42,8 @@ module NewtonAPI
             expression = expression.gsub("+","%2B").delete(' ')
             expression = expression.gsub("/","(over)")
             expression = expression.gsub("^","%5E")
-            lower = lower.to_i.to_s
-            upper = upper.to_i.to_s
+            lower = lower.to_f.to_s
+            upper = upper.to_f.to_s
             def_integral = lower + ":" + upper + "%7C" + expression
             request(
               http_method: :get,
@@ -59,7 +59,7 @@ module NewtonAPI
             expression = expression.gsub("+","%2B").delete(' ')
             expression = expression.gsub("/","(over)")
             expression = expression.gsub("^","%5E")
-            point = point.to_i.to_s
+            point = point.to_f.to_s
             tangent_line = point + "%7C" + expression
             request(
               http_method: :get,
@@ -75,8 +75,8 @@ module NewtonAPI
             number = number.gsub("+","%2B").delete(' ')
             number = number.gsub("/","(over)")
             number = number.gsub("^","%5E")
-            base = base.to_i.to_s
-            number = number.to_i.to_s
+            base = base.to_f.to_s
+            number = number.to_f.to_s
             log_input = base + "%7C" + number
             request(
               http_method: :get,
